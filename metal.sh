@@ -33,7 +33,7 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-  - $IP_POOLS
+  - 139.84.149.237-139.84.149.237
 
 ---
 apiVersion: metallb.io/v1beta1
