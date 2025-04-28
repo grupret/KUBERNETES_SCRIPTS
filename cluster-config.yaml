@@ -1,0 +1,24 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: demo-cluster
+  region: us-east-1
+  version: "1.31"
+nodeGroups:
+  - name: demo-nodes
+    instanceType: g4dn.2xlarge # 1 GPU, 8vCPU, 16GB mem
+    amiFamily: AmazonLinux2
+    minSize: 1
+    desiredCapacity: 1
+    maxSize: 1
+    volumeSize: 30
+    overrideBootstrapCommand: |
+      #!/bin/bash
+      source /var/lib/cloud/scripts/eksctl/bootstrap.helper.sh
+      /etc/eks/bootstrap.sh ${CLUSTER_NAME} --container-runtime containerd --kubelet-extra-args "--node-labels=${NODE_LABELS}"
+    ssh:
+      allow: false
+
+
+
+

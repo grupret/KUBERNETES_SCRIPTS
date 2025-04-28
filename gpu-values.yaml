@@ -1,0 +1,21 @@
+toolkit:
+  enabled: true  
+  version: "v1.17.0-ubi8" 
+
+driver:
+  enabled: true 
+  version: "510.47.03"  # Adjust the driver version to match Amazon Linux 2 compatibility
+
+runtime:
+  gpu:
+    runtimeClass: "nvidia"
+
+operator:
+  defaultRuntime: "containerd"
+
+containerd:
+  config:
+    runc:
+      enabled: false
+    nvidia:
+      enabled: true
